@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ColorBox from './ColorBox';
+import './Palette.css';
 
 class Palette extends Component {
   constructor(props) {
@@ -7,12 +9,22 @@ class Palette extends Component {
   }
   render() { 
     const {paletteName, id, emoji, colors} = this.props;
+    const colorBoxes = colors.map(color => (
+      <ColorBox background={color} key={color.name}/>
+    ));
     return (
       <div className="Palette">
-        <h1>{emoji}</h1>
+        <div className="Palette-colors">
+          {colorBoxes}
+        </div>
       </div>
     );
   }
 }
  
 export default Palette;
+
+/*
+-Palette
+ -ColorBox
+*/
