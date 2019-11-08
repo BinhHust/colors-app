@@ -26,5 +26,5 @@ export default Palette;
 
 /*
 -Palette
- -ColorBox
+ -ColorBox (s)
 */
