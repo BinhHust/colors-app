@@ -7,3 +7,18 @@
   height: 90%;
 
 }
+
+.Palette__footer {
+  height: 4vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 2rem;
+  font-weight: bold;
+}
+
+.Palette__footer span {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  margin-top: -.3rem;
+}

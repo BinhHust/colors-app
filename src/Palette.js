@@ -28,7 +28,7 @@ class Palette extends Component {
     const {level, format} = this.state;
 
     const colorBoxes = colors[level].map(color => (
-      <ColorBox color={color} key={color.name} format={format}/>
+      <ColorBox color={color} key={color.id} format={format}/>
     ));
     return (
       <div className="Palette">
@@ -39,6 +39,10 @@ class Palette extends Component {
         />
         <div className="Palette-colors">
           {colorBoxes}
+        </div>
+        <div className="Palette__footer">
+          {paletteName}
+          <span>{emoji}</span>
         </div>
       </div>
     );
@@ -51,6 +55,8 @@ export default Palette;
 - Palette 
   - Navbar : level
     - Slider
+    - Select
+    - Snackbar
   - ColorBox (s) : copied
     - CopyToClipboard
 */

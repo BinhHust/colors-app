@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import Slider from 'rc-slider/lib/Slider';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -35,7 +36,7 @@ class Navbar extends Component {
     return (
       <div className="Navbar">
         <div className="Navbar__logo">
-          <a className="Navbar__link">reactcolorpicker</a>
+          <Link className="Navbar__link" to='/'>reactcolorpicker</Link>
         </div>
         <div className="Navbar__slider">
           <span>Level: {level}</span>
@@ -64,13 +65,13 @@ class Navbar extends Component {
           }}
           onClose={this.closeSnackbar}
           action={[
-            <IconButton>
-              <CloseIcon
-                onClick={this.closeSnackbar}
-                color="inherit"
-                key='close'
-                aria-label='close'
-              ></CloseIcon>
+            <IconButton 
+              onClick={this.closeSnackbar}
+              color="inherit"
+              key='close'
+              aria-label='close'
+            >
+              <CloseIcon />
             </IconButton>
           ]}
         />
