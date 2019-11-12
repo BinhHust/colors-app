@@ -7,6 +7,7 @@ class Palette extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // #1: ele childrent la nn lam thay doi state trong parrent => goi func dc truyen tu cha, trong component con (argument: [chil] - par) 
       level: 500,
       format: 'hex'
     }
