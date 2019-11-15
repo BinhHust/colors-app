@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
-import './Palette.css';
+import FooterPalette from './FooterPalette';
+import {withStyles} from '@material-ui/styles';
+import styles from './styles/PaletteStyles';
 
 class Palette extends Component {
   constructor(props) {
@@ -27,30 +29,38 @@ class Palette extends Component {
   render() { 
     const {paletteName, id, emoji, colors} = this.props.palette;
     const {level, format} = this.state;
+    const {classes} = this.props;
 
     const colorBoxes = colors[level].map(color => (
-      <ColorBox color={color} key={color.id} format={format}/>
+      <ColorBox 
+        color={color} 
+        key={color.id} 
+        format={format}
+        moreUrl={`/palette/${id}/${color.id}`}
+        showMore
+      />
     ));
     return (
-      <div className="Palette">
+      <div className={classes.palette}>
         <Navbar
           level={level}
           handleChangeLevel={this.handleChangeLevel}
           changeFormat={this.changeFormat}
+          showingAllLevel
         />
-        <div className="Palette-colors">
+        <div className={classes.palettColors}>
           {colorBoxes}
         </div>
-        <div className="Palette__footer">
-          {paletteName}
-          <span>{emoji}</span>
-        </div>
+        <FooterPalette 
+          paletteName={paletteName}
+          emoji={emoji}
+        />
       </div>
     );
   }
 }
  
-export default Palette;
+export default withStyles(styles)(Palette);
 
 /*
 - Palette 
@@ -60,4 +70,6 @@ export default Palette;
     - Snackbar
   - ColorBox (s) : copied
     - CopyToClipboard
+  - FooterPalette
+- SingleColorPalette
 */

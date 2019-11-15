@@ -4,6 +4,7 @@ import Palette from './Palette';
 import seedColors from './seedColors';
 import {generatePalette} from './colorHelper';
 import PaletteList from './PaletteList'; 
+import SingleColorPalette from './SingleColorPalette';
 import "./App.css";
 
 class App extends Component {
@@ -25,12 +26,20 @@ class App extends Component {
           <Route 
             exact 
             path="/"
-            render={() => <PaletteList seedColors={seedColors}/>}
+            render={(routeProps) => <PaletteList seedColors={seedColors} {...routeProps} />}
           />
           <Route 
             exact
             path="/palette/:id"
             render={(routeProps) => <Palette palette={generatePalette(this.getPalette(routeProps.match.params.id))} />}
+          />
+          <Route 
+            exact
+            path="/palette/:paletteId/:id"
+            render={(routeProps) => <SingleColorPalette
+              palette={generatePalette(this.getPalette(routeProps.match.params.paletteId))} 
+              colorId={routeProps.match.params.id}
+            />}
           />
         </Switch>
       </div>

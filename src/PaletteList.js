@@ -1,35 +1,17 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 import {withStyles} from '@material-ui/styles';
 import MiniPalette from './MiniPalette';
-
-const styles = {
-  root: {
-    boxSizing: 'border-box',
-    backgroundColor: 'blue',
-    height: '100vh'
-  },
-  container: {
-    width: '50%',
-    margin: '0 auto',
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  title: {
-    color: '#fff',
-    fontSize: '2rem',
-    margin: '1.5rem 0'
-  },
-  colors: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  }
-}
+import styles from './styles/PaletteListStyles';
 
 class PaletteList extends Component {
   constructor(props) {
     super(props);
-    this.state = {  }
+    this.state = {  };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(id) {
+    this.props.history.push(`/palette/${id}`)
   }
 
   render() {
@@ -41,7 +23,7 @@ class PaletteList extends Component {
           <nav className={classes.title}>React Color</nav>
           <div className={classes.colors}>
             {seedColors.map(palette => (
-              <MiniPalette {...palette}/>
+              <MiniPalette {...palette} key={palette.id} handleClick={this.handleClick} />
             ))};
           </div>
         </div>
